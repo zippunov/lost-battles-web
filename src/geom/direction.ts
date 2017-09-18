@@ -1,6 +1,6 @@
 'use strict';
 
-class Direction {
+export default class Direction {
     static LEFT: Direction = new Direction(-1, 0);
     static TOP: Direction = new Direction(0, -1);
     static RIGHT: Direction = new Direction(1, 0);
