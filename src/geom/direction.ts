@@ -36,5 +36,3 @@ export default class Direction {
         return Direction.directions[resolvedIndex];
     }
 }
-
- 
