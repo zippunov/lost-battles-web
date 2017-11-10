@@ -8,7 +8,7 @@ import UnitState from './unit_state';
 
 const { Infantry, Cavalry, Chariots, Elephants } = TroopType;
 const { HI, HO, AR, PH, LE, LI, HC, CA, LC, EL, CH } = UnitType;
-const { Veteran, Average, Levy, African, Indian, Scythed } = UnitClass;
+const { VETERAN, AVERAGE, LEVY, AFRICAN, INDIAN, SCYTHED } = UnitClass;
 
 export default class Unit {
     readonly type: UnitType;
@@ -48,17 +48,17 @@ export default class Unit {
     }
 
     getStackingPoints(): number {
-        return this.hasClass(Levy) ? 2 : 1;
+        return this.hasClass(LEVY) ? 2 : 1;
     }
-    
+
     getAttackPoints(lead: boolean = false): number {
         if (this.is(LE)) {
             return 1;
         }
-        if (this.hasClass(Veteran) && this.is(HI, CA)) {
+        if (this.hasClass(VETERAN) && this.is(HI, CA)) {
             return 0.5;
         }
-        if (this.hasClass(Veteran) && this.is(LI, HC, LC)) {
+        if (this.hasClass(VETERAN) && this.is(LI, HC, LC)) {
             return 1;
         }
         if (this.is(HI, CA)) {
@@ -74,10 +74,10 @@ export default class Unit {
     }
 
     getFightingValue(victoryPointCount: boolean = false): number {
-        if(this.hasClass(Veteran)) {
+        if (this.hasClass(VETERAN)) {
             return 4;
         }
-        if(this.hasClass(Levy)) {
+        if (this.hasClass(LEVY)) {
             return 2;
         }
         if (this.is(LE) && !victoryPointCount) {

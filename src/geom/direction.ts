@@ -24,9 +24,8 @@ export default class Direction {
 
     /**
      * Clockwise rotation is positive, counterclockwise is negative
-     * 
-     * @param {number} turn 
-     * @returns {Direction} 
+     * @param {number} turn
+     * @returns {Direction}
      * @memberof Direction
      */
     rotate(turn: number): Direction {

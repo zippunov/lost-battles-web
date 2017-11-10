@@ -20,7 +20,7 @@ export default class UnitType {
     readonly code: string;
     readonly troops: TroopType;
     readonly parent: UnitType | null;
-    
+
     constructor(code: string, name: string, parent: UnitType | null, troops: TroopType) {
         this.code = code;
         this.name = name;

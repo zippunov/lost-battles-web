@@ -16,9 +16,9 @@
       true,
       "single"
     ],
-    "no-unused-variable": [
-      true
-    ],
+    "no-unused-variable": {
+      "severity": "warning"
+    },
     "no-use-before-declare": true,
     "brace-style": [
       true,
