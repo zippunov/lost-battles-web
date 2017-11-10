@@ -26,7 +26,7 @@ if (!module.parent) {
       width: 800,
       height: 600,
       renderer: Phaser.AUTO,
-      parent: 'iod2',
+      parent: 'ui',
       resolution: 1,
       forceSetTimeOut: false
     };

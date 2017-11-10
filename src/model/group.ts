@@ -1,10 +1,12 @@
 'use strict';
 
 import Unit from './unit';
+import Direction from '../geom/direction';
 
 export default class Group {
     readonly units: Array<Unit>;
     private _lead: Unit;
+    direction: Direction;
 
     constructor() {
         this.units = [];

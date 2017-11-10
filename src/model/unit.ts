@@ -3,7 +3,10 @@
 import UnitType from './unit_type';
 import UnitClass from './unit_class';
 import UnitStatus from './unit_status';
+import TroopType from './troop_type';
+import UnitState from './unit_state';
 
+const { Infantry, Cavalry, Chariots, Elephants } = TroopType;
 const { HI, HO, AR, PH, LE, LI, HC, CA, LC, EL, CH } = UnitType;
 const { Veteran, Average, Levy, African, Indian, Scythed } = UnitClass;
 
@@ -11,11 +14,13 @@ export default class Unit {
     readonly type: UnitType;
     readonly unitClass: UnitClass;
     status: UnitStatus;
+    state: UnitState;
 
     constructor(unitClass: UnitClass, type: UnitType) {
         this.unitClass = unitClass;
         this.type = type;
         this.status = UnitStatus.Fresh;
+        this.resetState();
     }
 
     get code(): string {
@@ -24,6 +29,10 @@ export default class Unit {
 
     get name(): string {
         return `${this.unitClass.name} ${this.type.name}`;
+    }
+
+    get troops(): TroopType {
+        return this.type.troops;
     }
 
     is(...types: Array<UnitType>): boolean {
@@ -75,5 +84,28 @@ export default class Unit {
             return 4;
         }
         return 3;
+    }
+
+    get baseFreeFacingChange(): number {
+        if (this.is(LI)) {
+            return 1;
+        }
+        if (this.is(LC)) {
+            return 2;
+        }
+        return 0;
+    }
+
+    get baseMovePoints(): number {
+        if (this.troops === Infantry || this.troops === Elephants || this.is(CA)) {
+            return 1;
+        }
+        return 2;
+    }
+
+    resetState(): void {
+        this.state = new UnitState();
+        this.state.movementPoints = this.baseMovePoints;
+        this.state.freeFacingChange = this.baseFreeFacingChange;
     }
 }

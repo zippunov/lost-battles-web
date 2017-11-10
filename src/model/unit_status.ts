@@ -2,7 +2,8 @@
 
 enum UnitStatus {
     Fresh,
-    Spent
+    Spent,
+    Shattered
 }
 
 export default UnitStatus;
